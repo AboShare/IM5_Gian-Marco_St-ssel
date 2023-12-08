@@ -1,0 +1,620 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #eaeaea;
+}
+
+header {
+  background: linear-gradient(to right, #3c0068, #400072);
+  color: white;
+  padding: 20px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 2000;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  transition: all 0.3s ease;
+  
+}
+
+.hamburger-menu div {
+  background-color: white;
+  height: 3px;
+  width: 100%;
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-open .dropdown {
+  transform: translateX(0);
+}
+
+.menu-open main {
+  transform: translateX(300px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-open .hamburger-menu div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-open .hamburger-menu div:nth-child(2) {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.menu-open .hamburger-menu div:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  order: -1;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.header-content {
+  position: relative;
+  z-index: 10;
+}
+
+.header-title {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+.dropdown {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f2edf6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 2;
+  padding-top: 10px;
+  top: 60px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 8px 16px;
+}
+
+.dropdown-content li {
+  padding: 8px 16px;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+  position: relative;
+  padding-left: 50px;
+  font-size: 0.9rem;
+}
+
+.dropdown-content a::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23400072"><polygon points="5,3 19,12 5,21 5,3"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.dropdown-content a.active {
+  font-weight: bold;
+  color: #400072;
+  background-color: #e5d9eb;
+}
+
+main {
+  padding-top: 60px;
+  padding-bottom: 70px;
+  transition: transform 0.3s ease-in-out;
+}
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  background-color: #400072;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.dropdown-content a.active {
+  font-weight: bold;
+  color: #400072;
+}
+
+.startcontainer {
+  background-color: #3c0068;
+  color: white;
+  padding: 40px 40px 20px 40px;
+  margin: 20px 0;
+  margin-top: 0px;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 60px);
+  z-index: 1;
+}
+
+.startcontainer h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.startcontainer p {
+  color: #ddd;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.startcontainer .dot {
+  z-index: -1; /* Setzt die Punkte hinter andere Inhalte */
+}
+
+.genre-container {
+  background-color: #3c0068;
+  color: white;
+  padding: 40px 40px 20px 40px;
+  margin: 20px 0;
+  margin-top: 0px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.genre-container h2,
+.genre-container p {
+  margin: 10px 0;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: appearDisappear 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+.genre-container .dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: appearDisappear 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes appearDisappear {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.genre-titel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+}
+
+#akzentbild {
+  width: 100px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.genre-introduction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infobox {
+  width: 47%;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #282e68;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.infobox p {
+  margin: 20px 30px 20px 30px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.kuenstlerbeschreibung {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.kuenstlerbeschreibung p {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+}
+
+.bild {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.bild img {
+  margin-bottom: 20px;
+}
+
+.bild a {
+  text-decoration: none;
+}
+
+.bild:hover {
+  transform: scale(1.15);
+}
+
+.bild p:hover {
+  font-weight: bold; 
+}
+
+.kuenstler {
+  width: 100px;
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.playlists {
+  padding: 0px 40px;
+  background-color: 9fe7ed;
+}
+
+.playlists h3 {
+  font-size: 2rem;
+}
+
+.playlist-verlinkung {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 20px;
+}
+
+.random-genre-button-container {
+  text-align: center;
+  padding: 20px;
+}
+
+#random-genre-button {
+  background-color: #282e68;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+#random-genre-button:hover {
+  background-color: #282e68;
+  transform: scale(1.05);
+}
+
+body.startseite {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.startcontainer {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.startcontainer p {
+  max-width: 600px;
+  margin: 20px auto; 
+  text-align: center;
+  line-height: 1.5;
+}
+
+.startseite #random-genre-button {
+  width: 47%;
+  padding: 30px;
+  margin: 10px;
+  margin-top: 50px;
+  border-radius: 30px;
+  background-color: #282e68;
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .header-title {
+      font-size: 20px;
+  }
+
+
+
+  .dropdown {
+    width: 200px; /* Verringern der Menübreite */
+    transform: translateX(-100%);
+  }
+
+  .menu-open .dropdown {
+    transform: translateX(0);
+  }
+
+  .menu-open main {
+    transform: translateX(200px);
+  }
+
+  .menu-open .hamburger-menu div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-open .hamburger-menu div:nth-child(2) {
+    opacity: 0;
+    transform: transl
+    ateX(20px); /* Anpassung der Transformation */
+  }
+
+  .menu-open .hamburger-menu div:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  h2 {
+      font-size: 2.5rem;
+  }
+
+  .infobox p {
+      font-size: 1.5rem;
+  }
+
+  .bild a {
+    font-size: 1.5rem;
+  }
+
+  .genre-titel {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  #akzentbild {
+      margin-bottom: 15px;
+  }
+
+  .genre-introduction, .kuenstlerbeschreibung {
+      flex-direction: column;
+  }
+
+  .infobox, .bild {
+      width: 100%;
+  }
+
+  .bild {
+      margin-bottom: 20px;
+
+  }
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+  .random-genre-button-container, .playlists {
+      padding: 20px 20px;
+  }
+
+  #random-genre-button {
+      width: 100%;
+      padding: 15px;
+  }
+
+  #random-genre-button {
+      font-size: 1.5rem;
+  }
+
+  .startcontainer p, .infobox p {
+      max-width: 100%;
+      padding: 0 15px;
+  }
+
+
+.random-genre-button-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  padding: 20px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+}
+
+@media only screen and (max-width: 599px) {
+
+  body {
+    overflow-x: hidden;
+  }
+  .genre-container {
+      flex-direction: column;
+      margin-top: -1px;
+  }
+
+  .startcontainer {
+    margin-top: -2px;
+  }
+
+  .header-title {
+      font-size: 1rem;
+  }
+
+  h2 {
+      font-size: 2rem;
+  }
+
+  .menu-open main {
+    transform: translateX(250px);
+  }
+
+  .genre-introduction {
+      flex-direction: column;
+  }
+
+  .genre-container .genre-titel,
+  .genre-container .genre-introduction,
+  .genre-container .infobox,
+  .genre-container .kuenstlerbeschreibung {
+      width: 100%;
+  }
+
+  .playlist-verlinkung {
+      flex-direction: column;
+  }
+
+  .playlist-verlinkung iframe {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .random-genre-button-container {
+      flex-direction: column;
+      max-width: 100%;
+  }
+
+  #random-genre-button {
+      width: 90%;
+      margin: 0 auto;
+  }
+
+  .dropdown {
+    width: 200px;
+    transform: translateX(-100%);
+  }
+
+  .menu-open .dropdown {
+    transform: translateX(0);
+  }
+
+  .menu-open main {
+    transform: translateX(200px);
+  }
+
+  .playlist-verlinkung {
+      padding: 10px;
+  }
+
+  .infobox p {
+      font-size: 1rem;
+  }
+
+  .infobox {
+      padding: 5px;
+  }
+
+  .bild, .kuenstlerbeschreibung {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bild img, .kuenstler {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  .bild a, .kuenstlerbeschreibung a {
+    text-align: center;
+    width: 100%;
+  }
+
+  .bild {
+    margin-bottom: 20px;
+  }
+
+  .kuenstlerbeschreibung p {
+    font-size: 1.1rem;
+  }
+
+  .startseite #random-genre-button {
+    width: 100%;
+    padding: 30px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 30px;
+    background-color: #282e68;
+  }
+
+  .menu-open .hamburger-menu div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    opacity: 1;
+  }
+  
+  .menu-open .hamburger-menu div:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-open .hamburger-menu div:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    opacity: 1;
+  }
+
+}
